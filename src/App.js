@@ -9,35 +9,11 @@ import Home from "./Pages/HomePage/Home";
 import UpdateContact from "./Pages/UpdateContact/UpdateContact";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
-import { useSelector } from "react-redux";
+import {PersistGate} from "redux-persist/integration/react";
+import {persistStore} from "redux-persist"
+
+let persistor =persistStore(store)
 function App() {
-  // const [users, setusers] = useState([
-  //   {
-  //     id: 1,
-  //     name: "mina",
-  //     email: "mina@gmail.com",
-  //     phone: "308271",
-  //     age: 24,
-  //     favorit: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "saeid",
-  //     email: "saeid@gmail.com",
-  //     phone: "564390",
-  //     age: 32,
-  //     favorit: false,
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "paniz",
-  //     email: "paniz@gmail.com",
-  //     phone: "823174",
-  //     age: 18,
-  //     favorit: true,
-  //   },
-  // ]);
-  // const users = useSelector(state=>state.users)
   const [form, setForm] = useState({
     id: 0,
     name: "",
@@ -67,7 +43,9 @@ function App() {
   return (
     <div>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <PersistGate persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </div>
   );
