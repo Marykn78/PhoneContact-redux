@@ -1,0 +1,24 @@
+.search-container{
+    position: relative;
+    left: 210px;
+    top:28px;
+    width:80%;
+}
+
+.search-input{
+    width:50%;
+    background-color: #f8f8f8;
+    padding:8px;
+    border-radius:3px;
+    border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 650px) {
+    .search-container {
+      width:40%;
+      left:160px;
+    }
+    .search-input{
+      width:100%;
+    }
+  }

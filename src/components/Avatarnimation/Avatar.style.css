@@ -1,0 +1,33 @@
+.avatar-display{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width:94.5%;
+    margin:20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+}
+.avatar-list{
+    width:50%;
+    display: grid;
+    grid-template-columns: repeat(3 , 3rem);
+}
+
+.avatar{
+    width:8rem;
+    height: 8rem;
+    transition: transform 300ms;
+}
+.avatar:hover ~ .avatar{
+    transform: translate(3rem);
+}
+.add{
+    margin-right:50px;
+}
+@media screen and (max-width:600px) {
+    .avatar-list{
+        width:40%;
+        display: grid;
+        grid-template-columns: repeat(3 , 2rem);
+    }
+}
