@@ -5,22 +5,29 @@ import Search from "../Search/Search";
 import './Table.style.css'
 import Avatarimg from "../Avatarnimation/Avatar";
 import { Link } from "react-router-dom";
+import { useDispatch} from "react-redux";
+import { likecontact } from "../../Redux/reducer/counterSlice";
 
 const tablerow =[{id:1,name:'id'},{id:2,name:'name'},{id:3,name:'email'},{id:4,name:'phone'},{id:5,name:'age'}]
 const tablehead =[{name:'profile'},{name:'id'},{name:'name'},{name:'email'},{name:'phone'},{name:'age'},{name:'like'},{name:''}]
-const Table = ({users,setusers,setForm,setMode}) => {
+const Table = ({setForm}) => {
   const [userid, setUserid] = useState(null);
   const [dismessage, setdisMessage] = useState("none");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [items, setitem] = useState([]);
+  const [mode, setMode] = useState("save");
 
+
+  // const users = useSelector(state=>state.users)
+  const dispatch =useDispatch()
   const checklikeHandler = (id) => {
-    setusers(
-      users.map((item) =>
-        item.id === id ? { ...item, favorit: !item.favorit } : item
-      )
-    );
+    dispatch(likecontact(id))
+    // setusers(
+    //   users.map((item) =>
+    //     item.id === id ? { ...item, favorit: !item.favorit } : item
+    //   )
+    // );
   };
   const showmessage = (id) => {
     setdisMessage("flex");
@@ -31,17 +38,14 @@ const Table = ({users,setusers,setForm,setMode}) => {
     setMode("update");
   };
 
-
-  // const [showform, setshowform] = useState("none");
-
   return (
     <div>
       <Delete
         dismessage={dismessage}
         setdisMessage={setdisMessage}
         userid={userid}
-        users={users}
-        setusers={setusers}
+        // users={users}
+        // setusers={setusers}
       />
       <Avatarimg />
       <Search setSearch={setSearch} />
@@ -49,8 +53,8 @@ const Table = ({users,setusers,setForm,setMode}) => {
         setitem={setitem}
         filter={filter}
         setFilter={setFilter}
-        users={users}
-        setusers={setusers}
+        // users={users}
+        // setusers={setusers}
       />
 
       <div className="space-item">

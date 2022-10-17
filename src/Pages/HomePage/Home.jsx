@@ -1,10 +1,9 @@
 import Table from '../../components/Table/Table'
 
-
-const Homepage = ({users,setusers,form,setForm,mode,setMode}) => {
+const Homepage = ({form,setForm}) => {
     return ( 
         <div>
-            <Table  users={users} setusers={setusers} form={form} setForm={setForm} mode={mode} setMode={setMode} />
+            <Table form={form} setForm={setForm}/>
         </div>
      );
 }

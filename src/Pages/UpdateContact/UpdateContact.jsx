@@ -1,13 +1,17 @@
+import { useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-const UpdateContact = ({ inputs,users,setUsers,form,setForm }) => {
+import { updatecontact } from '../../Redux/reducer/counterSlice';
+const UpdateContact = ({ inputs,form,setForm }) => {
+    const dispatch =useDispatch()
     const updatenavigate =useNavigate()
     const inputHandler = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+      setForm({ ...form, [e.target.name]: e.target.value });
     };
     const updateInput = (e)=>{
         e.preventDefault()
-        setUsers(users.map(item=>item.id === form.id ? form :item))
+        dispatch(updatecontact(form))
+        // setUsers(users.map(item=>item.id === form.id ? form :item))
         setForm({ name: "", email: "", phone: "", age: "" });
         updatenavigate('/')
     }

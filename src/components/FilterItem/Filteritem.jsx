@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import "./Filter.style.css";
-const FilterItem = ({ filter, users, setFilter, setitem }) => {
+const FilterItem = ({ filter, setFilter, setitem }) => {
   const filterdata = [
     { id: 1, title: "all" },
     { id: 2, title: "like" },
     { id: 3, title: "dislike" },
   ];
-
+  const users = useSelector(state=>state.users)
+  // const dispatch =useDispatch()
   const filterHandler = (title) => {
     setFilter(title);
   };

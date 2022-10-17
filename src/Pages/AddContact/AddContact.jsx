@@ -2,22 +2,28 @@ import "../AddContact/Form.style.css";
 import formimage from "../AddContact/image/image.webp";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addcontact } from "../../Redux/reducer/counterSlice";
+const Form = ({ form, setForm, inputs }) => {
+  // const contact = useSelector(state=>state.contact)
+  const dispatch = useDispatch()
 
-const Form = ({ form, setForm, users, setusers, inputs }) => {
   const navigate = useNavigate();
   const inputHandler = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const addItem = (e) => {
-    e.preventDefault();
-    setusers([
-      ...users,
-      {
-        id: Math.floor(Math.random() * 1000),
-        ...form,
-        favorit: false,
-      },
-    ]);
+  const addItem = () => {
+    dispatch(addcontact(form))
+    // console.log(form)
+    // e.preventDefault();
+    // setusers([
+    //   ...users,
+    //   {
+    //     id: Math.floor(Math.random() * 1000),
+    //     ...form,
+    //     favorit: false,
+    //   },
+    // ]);
     setForm({ name: "", email: "", phone: "", age: "" });
     navigate("/");
   };
