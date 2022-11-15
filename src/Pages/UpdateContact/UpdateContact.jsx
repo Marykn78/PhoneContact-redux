@@ -1,10 +1,28 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
+import formimage from "../../Assets/image/image.webp";
 import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { updatecontact } from '../../Redux/reducer/counterSlice';
-const UpdateContact = ({ inputs,form,setForm }) => {
+import { inputs } from '../../Data/data';
+import { useContext } from 'react';
+import { FormContext } from '../../Context/ContextForm';
+
+const UpdateContact = () => {
+  // const users =useSelector(state=>state.users)
+  // const {updateId} =useParams()
+  const {form,setForm}=useContext(FormContext)
+  // console.log(updateId)
+  // const [form, setForm] = useState({
+  //   id: 0,
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   age: "",
+  //   favorit: false,
+  // });
     const dispatch =useDispatch()
     const updatenavigate =useNavigate()
+
     const inputHandler = (e) => {
       setForm({ ...form, [e.target.name]: e.target.value });
     };
@@ -12,7 +30,7 @@ const UpdateContact = ({ inputs,form,setForm }) => {
         e.preventDefault()
         dispatch(updatecontact(form))
         // setUsers(users.map(item=>item.id === form.id ? form :item))
-        setForm({ name: "", email: "", phone: "", age: "" });
+        // setForm({ name: "", email: "", phone: "", age: "" });
         updatenavigate('/')
     }
   return (
@@ -43,9 +61,9 @@ const UpdateContact = ({ inputs,form,setForm }) => {
           </div>
         </form>
       </div>
-      {/* <div className="formimgcontainer">
+      <div className="formimgcontainer">
         <img className="form-image" src={formimage} alt="form" />
-      </div> */}
+      </div>
     </div>
   );
 };

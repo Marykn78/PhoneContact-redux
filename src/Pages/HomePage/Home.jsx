@@ -1,12 +1,14 @@
 import Table from '../../components/Table/Table'
 
-const Homepage = ({form,setForm}) => {
+const Homepage = () => {
     return ( 
         <div>
-            <Table form={form} setForm={setForm}/>
+            <Table />
         </div>
      );
 }
  
 export default Homepage;
 
+
+// form={form} setForm={setForm}

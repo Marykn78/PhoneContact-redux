@@ -33,10 +33,10 @@ export const Contactslice = createSlice({
         addcontact:(state,action)=>{    
             // state = [...state,action.payload]
             state.push(action.payload)
-            // console.log(action.payload)
         },
         removecontact:(state,action)=>{
             const index = state.findIndex(item=>(item.id === action.payload.id))
+            console.log(index)
             state.splice(index,1)
         },
         likecontact:(state,action)=>{

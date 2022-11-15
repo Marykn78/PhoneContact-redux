@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import Delete from "../DeleteMessage/Delete";
 import FilterItem from "../FilterItem/Filteritem";
 import Search from "../Search/Search";
@@ -7,18 +7,26 @@ import Avatarimg from "../Avatarnimation/Avatar";
 import { Link } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import { likecontact } from "../../Redux/reducer/counterSlice";
+import { useContext } from "react";
+import { FormContext } from "../../Context/ContextForm";
+import { tablerow } from "../../Data/data";
+import { tablehead } from "../../Data/data";
 
-const tablerow =[{id:1,name:'id'},{id:2,name:'name'},{id:3,name:'email'},{id:4,name:'phone'},{id:5,name:'age'}]
-const tablehead =[{name:'profile'},{name:'id'},{name:'name'},{name:'email'},{name:'phone'},{name:'age'},{name:'like'},{name:''}]
-const Table = ({setForm}) => {
+const Table = () => {
   const [userid, setUserid] = useState(null);
   const [dismessage, setdisMessage] = useState("none");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [items, setitem] = useState([]);
-  const [mode, setMode] = useState("save");
 
-
+  const {setForm}=useContext(FormContext)
+  // const [form, setForm] = useState({
+  //   id: 0,
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   age: "",
+  // });
   // const users = useSelector(state=>state.users)
   const dispatch =useDispatch()
   const checklikeHandler = (id) => {
@@ -35,7 +43,8 @@ const Table = ({setForm}) => {
   };
   const updateHandler = (user) => {
     setForm(user);
-    setMode("update");
+    console.log(user)
+    // setMode("update");
   };
 
   return (
