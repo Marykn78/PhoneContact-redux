@@ -8,18 +8,7 @@ import { useContext } from 'react';
 import { FormContext } from '../../Context/ContextForm';
 
 const UpdateContact = () => {
-  // const users =useSelector(state=>state.users)
-  // const {updateId} =useParams()
   const {form,setForm}=useContext(FormContext)
-  // console.log(updateId)
-  // const [form, setForm] = useState({
-  //   id: 0,
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  //   age: "",
-  //   favorit: false,
-  // });
     const dispatch =useDispatch()
     const updatenavigate =useNavigate()
 
@@ -38,7 +27,7 @@ const UpdateContact = () => {
       <div className="form-container">
         <form className="form" action="" onSubmit={updateInput}>
           {inputs.map((item) => (
-            <div className="input-row">
+            <div className="input-row" key={item.id}>
               <input
                 className="input-submit"
                 type={item.type}

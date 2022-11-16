@@ -12,9 +12,6 @@ const FilterItem = ({ filter, setFilter, setitem }) => {
   const filterHandler = (title) => {
     setFilter(title);
   };
-  useEffect(() => {
-    checkFilter();
-  }, [users, filter]);
   const checkFilter = () => {
     switch (filter) {
       case "like":
@@ -27,12 +24,15 @@ const FilterItem = ({ filter, setFilter, setitem }) => {
         setitem(users);
     }
   };
-
+  useEffect(() => {
+    checkFilter();
+  }, [users, filter]);
   return (
     <>
       <div className="filter-container">
-        {filterdata.map((item) => (
+        {filterdata.map((item,index) => (
           <button
+            key={index}
             className="filter-btn"
             onClick={() => filterHandler(item.title)}
             style={{ background: item.title === filter ? "#90728b" : "#ddd" }}
@@ -46,18 +46,3 @@ const FilterItem = ({ filter, setFilter, setitem }) => {
 };
 
 export default FilterItem;
-// onClick={() => checkFilter(item)}
-// {()=>filterHandler(item.title)}
-
-// const checkFilter = (item) => {
-//   if(item.title === 'all'){
-//     console.log(item.title)
-//     setitem(users);
-//   }
-//   else if (item.title === "like") {
-//     setitem(users.filter((item) => item.favorit === true));
-//   } else if (item.title === "dislike") {
-//     setitem(users.filter((item) => item.favorit === false));
-//   }
-//   setFilter(item.title)
-// };

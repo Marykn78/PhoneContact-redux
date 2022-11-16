@@ -9,9 +9,6 @@ const InfoContact = () => {
     const users =useSelector(state=>state.users)
     const [infoUser,setInfouser]=useState({})
     const {userId} = useParams()
-    // console.log(userId)
-    // console.log(users)
-    // console.log(infoUser)
     useEffect(() => {
         setInfouser(users.filter(item => item.id === Number(userId))[0])
     },[])

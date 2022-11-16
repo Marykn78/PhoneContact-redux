@@ -28,7 +28,7 @@
   border: 2px solid rgba(0, 0, 0, 0.656);
   padding: 5px;
   border-radius: 30px;
-  background: radial-gradient(#fbc1cc, #fa99b2);
+  background: radial-gradient(#fbc1cc, #be86b6);
 }
 .card-image img {
   width: 100%;
@@ -46,14 +46,16 @@
   transform: scale(1.01);
 }
 .card-2 {
-  background: radial-gradient(#fbc1cc, #fa99b2);
+  /* background: radial-gradient(#fbc1cc,#90728b); */
+  background: #be86b6;
+
 }
 .card-3 {
     width:50%;
-    background: radial-gradient(#fbc1cc, #fa99b2);
+    background:#fbc1cc
 }
 .back_card{
-  background-color: #89bafb;
+  background-color: #fbc1cc;
   border-radius: 10px;
 }
 @media screen and (max-width: 650px) {

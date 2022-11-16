@@ -1,5 +1,4 @@
 import "../AddContact/Form.style.css";
-// import formimage from "../AddContact/image/image.webp";
 import addform from '../../Assets/image/addform.png'
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -11,16 +10,6 @@ import { useContext } from "react";
 import { FormContext } from "../../Context/ContextForm";
 const Form = () => {
   const {form,setForm}=useContext(FormContext)
-  // const [form, setForm] = useState({
-  //   // id:0,
-  //   id: Math.floor(Math.random()*1000),
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  //   age: "",
-  //   favorit: false,
-  // });
-  // const users = useSelector(state=>state.users)
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const inputHandler = (e) => {
@@ -28,16 +17,6 @@ const Form = () => {
   };
   const addItem = () => {
     dispatch(addcontact(form))
-    // console.log(form)
-    // e.preventDefault();
-    // setusers([
-    //   ...users,
-    //   {
-    //     id: Math.floor(Math.random() * 1000),
-    //     ...form,
-    //     favorit: false,
-    //   },
-    // ]);
     setForm({ name: "", email: "", phone: "", age: "" });
     navigate("/");
   };
@@ -55,10 +34,9 @@ const Form = () => {
       <div className="form-container">
         <form className="form" action="" onSubmit={addItem}>
           {inputs.map((item) => (
-            <div className="input-row">
+            <div className="input-row" key={item.id}>
               <input
                 className="input-submit"
-                key={item.id}
                 type={item.type}
                 name={item.name}
                 onChange={inputHandler}
@@ -87,3 +65,17 @@ const Form = () => {
 };
 
 export default Form;
+
+
+
+
+    // console.log(form)
+    // e.preventDefault();
+    // setusers([
+    //   ...users,
+    //   {
+    //     id: Math.floor(Math.random() * 1000),
+    //     ...form,
+    //     favorit: false,
+    //   },
+    // ]);

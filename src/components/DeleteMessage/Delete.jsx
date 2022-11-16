@@ -7,7 +7,6 @@ const Delete = ({dismessage,setdisMessage,userid}) => {
     setdisMessage('none')
   };
   const deleteHandler = () => {
-    console.log(userid)
     dispatch(removecontact(userid))
     notshowmessage();
   };

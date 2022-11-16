@@ -18,16 +18,7 @@ const Table = () => {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [items, setitem] = useState([]);
-
   const {setForm}=useContext(FormContext)
-  // const [form, setForm] = useState({
-  //   id: 0,
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  //   age: "",
-  // });
-  // const users = useSelector(state=>state.users)
   const dispatch =useDispatch()
   const checklikeHandler = (id) => {
     dispatch(likecontact(id))
@@ -39,14 +30,10 @@ const Table = () => {
   };
   const showmessage = (id) => {
     setdisMessage("flex");
-    console.log(id)
     setUserid(id);
-    // console.log(userid)
   };
   const updateHandler = (user) => {
     setForm(user);
-    console.log(user)
-    // setMode("update");
   };
 
   return (
@@ -55,8 +42,6 @@ const Table = () => {
         dismessage={dismessage}
         setdisMessage={setdisMessage}
         userid={userid}
-        // users={users}
-        // setusers={setusers}
       />
       <Avatarimg />
       <Search setSearch={setSearch} />
@@ -64,15 +49,13 @@ const Table = () => {
         setitem={setitem}
         filter={filter}
         setFilter={setFilter}
-        // users={users}
-        // setusers={setusers}
       />
 
       <div className="space-item">
         <table className='table' >
           <thead>
             <tr>
-              {tablehead.map(th=>(<th>{th.name}</th>))}
+              {tablehead.map((th,index)=>(<th key={index}>{th.name}</th>))}
             </tr>
           </thead>
           {items
@@ -80,12 +63,12 @@ const Table = () => {
               item.name.toUpperCase().includes(search.toUpperCase())
             )
             .map((user) => (
-              <tbody>
-                <tr key={user.id}>
+              <tbody key={user.id}>
+                <tr>
                     <td className="avatar-table">
                       <img src= {`https://avatars.dicebear.com/api/adventurer/:${user.id}.svg`} alt='avatar' />
                     </td>
-                    {tablerow.map(row=>(<td>{user[row.name]}</td>))}
+                    {tablerow.map((row,index)=>(<td key={index}>{user[row.name]}</td>))}
                     <td onClick={() => checklikeHandler(user.id)}>
                       {user.favorit ? <iconify-icon icon="ant-design:like-twotone" width="28" height="28"></iconify-icon> :<iconify-icon icon="ant-design:dislike-twotone" width="28" height="28"></iconify-icon>}
                     </td>
