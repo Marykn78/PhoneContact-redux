@@ -8,16 +8,18 @@ import {persistStore} from "redux-persist"
 import router from "./Routes/Routes";
 import Form  from "./Context/ContextForm";
 
-let persistor =persistStore(store)
+// let persistor =persistStore(store)
 function App() {
+// let persistor =persistStore(store)
+
   return (
     <>
       <Provider store={store}>
-        <PersistGate persistor={persistor}>
+        {/* <PersistGate persistor={persistor}> */}
         <Form>
           <RouterProvider router={router} />
         </Form>
-        </PersistGate>
+        {/* </PersistGate> */}
       </Provider>
     </>
   );

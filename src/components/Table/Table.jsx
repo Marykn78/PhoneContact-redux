@@ -6,7 +6,7 @@ import './Table.style.css'
 import Avatarimg from "../Avatarnimation/Avatar";
 import { Link } from "react-router-dom";
 import { useDispatch} from "react-redux";
-import { likecontact } from "../../Redux/reducer/counterSlice";
+import { likecontact } from "../../Redux/reducer/Slice";
 import { useContext } from "react";
 import { FormContext } from "../../Context/ContextForm";
 import { tablerow } from "../../Data/data";
@@ -39,7 +39,9 @@ const Table = () => {
   };
   const showmessage = (id) => {
     setdisMessage("flex");
+    console.log(id)
     setUserid(id);
+    // console.log(userid)
   };
   const updateHandler = (user) => {
     setForm(user);
@@ -79,7 +81,7 @@ const Table = () => {
             )
             .map((user) => (
               <tbody>
-                <tr>
+                <tr key={user.id}>
                     <td className="avatar-table">
                       <img src= {`https://avatars.dicebear.com/api/adventurer/:${user.id}.svg`} alt='avatar' />
                     </td>

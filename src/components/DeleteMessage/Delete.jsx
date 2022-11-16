@@ -1,14 +1,15 @@
 import './Delete.style.css'
 import { useDispatch } from 'react-redux';
-import { removecontact } from '../../Redux/reducer/counterSlice';
+import { removecontact } from '../../Redux/reducer/Slice';
 const Delete = ({dismessage,setdisMessage,userid}) => {
   const dispatch = useDispatch()
-  const deleteHandler = () => {
-    dispatch(removecontact(userid))
-    notshowmessage();
-  };
   const notshowmessage=()=>{
     setdisMessage('none')
+  };
+  const deleteHandler = () => {
+    console.log(userid)
+    dispatch(removecontact(userid))
+    notshowmessage();
   };
   return (
     <div>

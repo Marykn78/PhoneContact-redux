@@ -2,7 +2,7 @@ import { useDispatch} from 'react-redux';
 import formimage from "../../Assets/image/image.webp";
 import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { updatecontact } from '../../Redux/reducer/counterSlice';
+import { updatecontact } from '../../Redux/reducer/Slice';
 import { inputs } from '../../Data/data';
 import { useContext } from 'react';
 import { FormContext } from '../../Context/ContextForm';

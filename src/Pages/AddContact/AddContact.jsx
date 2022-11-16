@@ -4,7 +4,7 @@ import addform from '../../Assets/image/addform.png'
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addcontact } from "../../Redux/reducer/counterSlice";
+import { addcontact } from "../../Redux/reducer/Slice";
 import { inputs } from "../../Data/data";
 import { useEffect } from "react";
 import { useContext } from "react";
